@@ -8,7 +8,7 @@ import org.joaquinsanchez.view.CalculadoraView;
 public class main extends Application {
 
     public static void main(String[] args) {
-        System.out.println("hola mundo");
+        System.out.println("CARGANDO MI CALCULADORA...");
         launch(args);
     }
  

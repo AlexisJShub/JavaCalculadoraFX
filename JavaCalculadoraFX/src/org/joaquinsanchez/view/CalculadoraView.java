@@ -14,6 +14,7 @@ public class CalculadoraView {
     private VBox view;
     private Label pantalla;
     private GridPane cuadroBotones;
+    private CalculadoraController controlador = new CalculadoraController();
 
     //Estilo de mi pantalla de calculos
     public CalculadoraView(){
