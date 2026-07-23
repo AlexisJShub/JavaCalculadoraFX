@@ -22,15 +22,15 @@ public class CalculadoraController {
         }
 
         switch (entrada) {
-            case "CLR":
+            case "CLR": //limpiar la pantallita
                 opcion1 = "";
                 operador = "";
                 opcion2 = "";
                 break;
-            case "<--":
+            case "<--": //para borrar ultimo digito
                 borrarUltimo();
                 break;
-            case ".":
+            case ".": //para agregar punto
                 agregarPunto();
                 break;
             case "+": case "-": case "*": case "/": case "^":
@@ -46,7 +46,7 @@ public class CalculadoraController {
                     calculoTerminado = true;
                 }
                 break;
-            case "=":
+            case "=": //Aca se calcula nuestro resultado
                 calcularResultado();
                 break;
             default:
@@ -99,10 +99,10 @@ public class CalculadoraController {
                     double resultado = 0;
 
                     switch (operador) {
-                        case "+": resultado = num1 + num2; break;
-                        case "-": resultado = num1 - num2; break;
-                        case "*": resultado = num1 * num2; break;
-                        case "/":
+                        case "+" -> resultado = num1 + num2;
+                        case "-" -> resultado = num1 - num2;
+                        case "*" -> resultado = num1 * num2;
+                        case "/" -> {
                             if (num2 == 0) {
                                 opcion1 = "Error";
                                 operador = "";
@@ -111,8 +111,9 @@ public class CalculadoraController {
                                 return;
                             }
                             resultado = num1 / num2;
-                            break;
-                        case "^": resultado = Math.pow(num1, num2); break;
+                        }
+                        
+                        case "^" -> resultado = Math.pow(num1, num2); //para nuestras potencias
                     }
                         //Aca ya funciona CLR para borrar el resultado y nos deje la pantallita en blanco
                     formatearResultado(resultado);
@@ -120,7 +121,7 @@ public class CalculadoraController {
                     opcion2 = "";
                     calculoTerminado = true;
 
-                } catch (Exception e) {
+                } catch (NumberFormatException e) {
                     opcion1 = "Error";
                 }
             }
