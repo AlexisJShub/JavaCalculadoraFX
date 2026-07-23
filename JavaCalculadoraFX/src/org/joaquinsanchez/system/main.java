@@ -17,9 +17,8 @@ public class main extends Application {
         // Cargar vista de la calculadora 
         CalculadoraView calculadora = new CalculadoraView();
         
-        // --- AQUÍ SE CAMBIÓ EL TAMAÑO ---
-        // Pasamos de 266x390 a un tamaño más amplio de 320x480
-        Scene escena = new Scene(calculadora.getView(), 320, 480);
+       //Tamaño de mi calculadora
+        Scene escena = new Scene(calculadora.getView(), 320, 500);
         
         // Configuramos y mostramos la ventana principal
         escenarioPrincipal.setTitle("Calculadora de Joaquín");
