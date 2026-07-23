@@ -89,3 +89,39 @@ public class CalculadoraController {
                 }
             }
         }
+        
+    private void calcularResultado() {
+            if (!opcion1.isEmpty() && !opcion2.isEmpty() && !operador.isEmpty()) {
+                try {
+                    //Usamos double para que funcionen nuestros decimales
+                    double num1 = Double.parseDouble(opcion1);
+                    double num2 = Double.parseDouble(opcion2);
+                    double resultado = 0;
+
+                    switch (operador) {
+                        case "+": resultado = num1 + num2; break;
+                        case "-": resultado = num1 - num2; break;
+                        case "*": resultado = num1 * num2; break;
+                        case "/":
+                            if (num2 == 0) {
+                                opcion1 = "Error";
+                                operador = "";
+                                opcion2 = "";
+                                calculoTerminado = true;
+                                return;
+                            }
+                            resultado = num1 / num2;
+                            break;
+                        case "^": resultado = Math.pow(num1, num2); break;
+                    }
+                        //Aca ya funciona CLR para borrar el resultado y nos deje la pantallita en blanco
+                    formatearResultado(resultado);
+                    operador = "";
+                    opcion2 = "";
+                    calculoTerminado = true;
+
+                } catch (Exception e) {
+                    opcion1 = "Error";
+                }
+            }
+        }
