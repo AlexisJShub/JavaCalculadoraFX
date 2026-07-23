@@ -40,7 +40,8 @@ public class CalculadoraView {
         String estiloNumeros = "-fx-background-color: #DCD7C9; -fx-text-fill: #2C363F; -fx-background-radius: 8px; -fx-font-weight: bold; -fx-cursor: hand; -fx-font-size: 22px; -fx-padding: 10px;";
         String estiloOperadores = "-fx-background-color: #797A7E; -fx-text-fill: #FFFFFF; -fx-background-radius: 8px; -fx-font-weight: bold; -fx-cursor: hand; -fx-font-size: 22px; -fx-padding: 10px;";
         String estiloDelete = "-fx-background-color: #C84B31; -fx-text-fill: #FFFFFF; -fx-background-radius: 8px; -fx-font-weight: bold; -fx-cursor: hand; -fx-font-size: 22px; -fx-padding: 10px;";
-
+        String estiloIgual = "-fx-background-color: #2EA071; -fx-text-fill: #FFFFFF; -fx-background-radius: 8px; -fx-font-weight: bold; -fx-cursor: hand; -fx-font-size: 22px; -fx-padding: 10px;";
+        
         //BOTONES NUMERICOS
         Button btnUno = new Button("1");
         btnUno.setPrefSize(60, 60);
@@ -103,6 +104,18 @@ public class CalculadoraView {
         btnDiv.setPrefSize(60, 60);
         btnDiv.setStyle(estiloOperadores);
         
+        Button btnIgual = new Button("=");
+        btnIgual.setPrefSize(60, 60);
+        btnIgual.setStyle(estiloIgual);
+        
+        Button btnPotencia = new Button("^");
+        btnPotencia.setPrefSize(60, 60);
+        btnPotencia.setStyle(estiloOperadores);
+        
+         Button btnRaiz = new Button("√");
+        btnRaiz.setPrefSize(60, 60);
+        btnRaiz.setStyle(estiloOperadores);
+               
         //Posiciones de teclas
         cuadroBotones.add(btnUno, 0, 3);
         cuadroBotones.add(btnDos, 1, 3);
@@ -113,13 +126,19 @@ public class CalculadoraView {
         cuadroBotones.add(btnSiete, 0, 1);
         cuadroBotones.add(btnOcho, 1, 1);
         cuadroBotones.add(btnNueve, 2, 1);
+        cuadroBotones.add(btnCero, 1, 4);
         
         cuadroBotones.add(btnDelete, 2, 0);
+        cuadroBotones.add(btnIgual, 3,4 );
+        cuadroBotones.add(btnPotencia, 1, 0);
+        cuadroBotones.add(btnRaiz, 0, 0);
         cuadroBotones.add(btnDiv, 3, 0);
         cuadroBotones.add(btnMult, 3, 1);   
         cuadroBotones.add(btnResta, 3, 2);
         cuadroBotones.add(btnSuma, 3, 3);
-        cuadroBotones.add(btnCero, 1, 4);
+        
+        
+     
         
 // Agregamos la pantalla y el cuadro de botones al contenedor principal (VBox)
         view.getChildren().addAll(pantalla, cuadroBotones);
