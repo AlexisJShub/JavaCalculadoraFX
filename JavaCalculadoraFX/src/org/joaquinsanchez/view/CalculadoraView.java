@@ -8,6 +8,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import org.joaquinsanchez.controller.CalculadoraController;
  
 public class CalculadoraView {
     private VBox view;
@@ -43,82 +44,101 @@ public class CalculadoraView {
         String estiloIgual = "-fx-background-color: #2EA071; -fx-text-fill: #FFFFFF; -fx-background-radius: 8px; -fx-font-weight: bold; -fx-cursor: hand; -fx-font-size: 22px; -fx-padding: 10px;";
         
         //BOTONES NUMERICOS
-        Button btnUno = new Button("1");
+     Button btnUno = new Button("1");
         btnUno.setPrefSize(60, 60);
         btnUno.setStyle(estiloNumeros);
+        btnUno.setOnAction(e -> controlador.procesoDeEntrada("1", pantalla));
 
         Button btnDos = new Button("2");
         btnDos.setPrefSize(60, 60);
         btnDos.setStyle(estiloNumeros);
+        btnDos.setOnAction(e -> controlador.procesoDeEntrada("2", pantalla));
         
         Button btnTres = new Button("3");
         btnTres.setPrefSize(60, 60);
         btnTres.setStyle(estiloNumeros);
+        btnTres.setOnAction(e -> controlador.procesoDeEntrada("3", pantalla));
         
         Button btnCuatro = new Button("4");
         btnCuatro.setPrefSize(60, 60);
         btnCuatro.setStyle(estiloNumeros);
+        btnCuatro.setOnAction(e -> controlador.procesoDeEntrada("4", pantalla));
         
         Button btnCinco = new Button("5");
         btnCinco.setPrefSize(60, 60);
         btnCinco.setStyle(estiloNumeros);
+        btnCinco.setOnAction(e -> controlador.procesoDeEntrada("5", pantalla));
         
         Button btnSeis = new Button("6");
         btnSeis.setPrefSize(60, 60);
         btnSeis.setStyle(estiloNumeros);
+        btnSeis.setOnAction(e -> controlador.procesoDeEntrada("6", pantalla));
 
         Button btnSiete = new Button("7");
         btnSiete.setPrefSize(60, 60);
         btnSiete.setStyle(estiloNumeros);
+        btnSiete.setOnAction(e -> controlador.procesoDeEntrada("7", pantalla));
 
         Button btnOcho = new Button("8");
         btnOcho.setPrefSize(60, 60);
         btnOcho.setStyle(estiloNumeros);
+        btnOcho.setOnAction(e -> controlador.procesoDeEntrada("8", pantalla));
 
         Button btnNueve = new Button("9");
         btnNueve.setPrefSize(60, 60);
         btnNueve.setStyle(estiloNumeros);
+        btnNueve.setOnAction(e -> controlador.procesoDeEntrada("9", pantalla));
 
         Button btnCero = new Button("0");
         btnCero.setPrefSize(60, 60);
         btnCero.setStyle(estiloNumeros);
+        btnCero.setOnAction(e -> controlador.procesoDeEntrada("0", pantalla));
     
-        //OPERADORES
+        //OPERADORES Y SUS ACCIONES
         Button btnDelete = new Button("<--");
         btnDelete.setPrefSize(60, 60);
         btnDelete.setStyle(estiloDelete);
+        btnDelete.setOnAction(e -> controlador.procesoDeEntrada("<--", pantalla));
         
         Button btnSuma = new Button("+");
         btnSuma.setPrefSize(60, 60);
         btnSuma.setStyle(estiloOperadores);
+        btnSuma.setOnAction(e -> controlador.procesoDeEntrada("+", pantalla));
         
         Button btnResta = new Button("-");
         btnResta.setPrefSize(60, 60);
         btnResta.setStyle(estiloOperadores);
+        btnResta.setOnAction(e -> controlador.procesoDeEntrada("-", pantalla));
         
         Button btnMult = new Button("*");
         btnMult.setPrefSize(60, 60);
         btnMult.setStyle(estiloOperadores);
+        btnMult.setOnAction(e -> controlador.procesoDeEntrada("*", pantalla));
         
         Button btnDiv = new Button("/");
         btnDiv.setPrefSize(60, 60);
         btnDiv.setStyle(estiloOperadores);
+        btnDiv.setOnAction(e -> controlador.procesoDeEntrada("/", pantalla));
         
         Button btnIgual = new Button("=");
         btnIgual.setPrefSize(60, 60);
         btnIgual.setStyle(estiloIgual);
+        btnIgual.setOnAction(e -> controlador.procesoDeEntrada("=", pantalla));
         
         Button btnPotencia = new Button("^");
         btnPotencia.setPrefSize(60, 60);
         btnPotencia.setStyle(estiloOperadores);
+        btnPotencia.setOnAction(e -> controlador.procesoDeEntrada("^", pantalla));
         
          Button btnRaiz = new Button("√");
         btnRaiz.setPrefSize(60, 60);
         btnRaiz.setStyle(estiloOperadores);
+        btnRaiz.setOnAction(e -> controlador.procesoDeEntrada("√", pantalla));
         
         Button btnPunto = new Button(".");
         btnPunto.setPrefSize(60, 60);
         btnPunto.setStyle(estiloOperadores);
+        btnPunto.setOnAction(e -> controlador.procesoDeEntrada(".", pantalla));
         
         Button btnClr = new Button("CLR");
         btnClr.setPrefSize(60, 60);
