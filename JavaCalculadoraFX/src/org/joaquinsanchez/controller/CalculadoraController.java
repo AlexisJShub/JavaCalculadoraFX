@@ -125,3 +125,23 @@ public class CalculadoraController {
                 }
             }
         }
+    
+    //Le faltaba comprobar para poder entregar decimales al momento
+        private void formatearResultado(double resultado) {
+            if (resultado % 1 == 0) {
+                opcion1 = String.valueOf((long) resultado);
+            } else {
+                opcion1 = String.valueOf(resultado);
+            }
+        }
+            //y para colocar numeros y operadores tambien 
+        private void actualizarPantalla(Label pantalla) {
+            if (opcion1.equals("Error")) {
+                pantalla.setText("Error");
+            } else if (operador.isEmpty()) {
+                pantalla.setText(opcion1.isEmpty() ? "0" : opcion1);
+            } else {
+                pantalla.setText(opcion1 + " " + operador + " " + opcion2);
+            }
+        }
+    }
