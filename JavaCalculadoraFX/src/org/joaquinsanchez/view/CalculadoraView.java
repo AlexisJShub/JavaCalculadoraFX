@@ -141,9 +141,11 @@ public class CalculadoraView {
         btnPunto.setStyle(estiloOperadores);
         btnPunto.setOnAction(e -> controlador.procesoDeEntrada(".", pantalla));
         
-        Button btnClr = new Button("CLR");
+       Button btnClr = new Button("CLR");
         btnClr.setPrefSize(60, 60);
         btnClr.setStyle(estiloOperadores);
+        btnClr.setOnAction(e -> controlador.procesoDeEntrada("CLR", pantalla));
+      
                
         //Posiciones de teclas
         cuadroBotones.add(btnUno, 0, 3);
