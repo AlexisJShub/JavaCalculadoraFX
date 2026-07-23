@@ -63,4 +63,29 @@ public class CalculadoraController {
         
         actualizarPantalla(pantalla);
     }
-}
+        
+    //Esta es la opcion de delete para eliminar un numero si nos equivocamos
+    private void borrarUltimo() {
+            if (!opcion2.isEmpty()) {
+                opcion2 = opcion2.substring(0, opcion2.length() - 1);
+            } else if (!operador.isEmpty()) {
+                operador = "";
+            } else if (!opcion1.isEmpty()) {
+                opcion1 = opcion1.substring(0, opcion1.length() - 1);
+            }
+        }
+
+        //para agregar punto para operaciones decimales
+        private void agregarPunto() {
+            if (operador.isEmpty()) {
+                // Solo agrega el punto si no existe ya uno en opcion1
+                if (!opcion1.contains(".")) {
+                    opcion1 += opcion1.isEmpty() ? "0." : ".";
+                }
+            } else {
+                // Solo agrega el punto si no existe ya uno en opcion2
+                if (!opcion2.contains(".")) {
+                    opcion2 += opcion2.isEmpty() ? "0." : ".";
+                }
+            }
+        }
