@@ -115,6 +115,14 @@ public class CalculadoraView {
          Button btnRaiz = new Button("√");
         btnRaiz.setPrefSize(60, 60);
         btnRaiz.setStyle(estiloOperadores);
+        
+        Button btnPunto = new Button(".");
+        btnPunto.setPrefSize(60, 60);
+        btnPunto.setStyle(estiloOperadores);
+        
+        Button btnClr = new Button("CLR");
+        btnClr.setPrefSize(60, 60);
+        btnClr.setStyle(estiloOperadores);
                
         //Posiciones de teclas
         cuadroBotones.add(btnUno, 0, 3);
@@ -136,6 +144,8 @@ public class CalculadoraView {
         cuadroBotones.add(btnMult, 3, 1);   
         cuadroBotones.add(btnResta, 3, 2);
         cuadroBotones.add(btnSuma, 3, 3);
+        cuadroBotones.add(btnPunto, 2, 4);
+        cuadroBotones.add(btnClr, 0, 4);
         
         
      
