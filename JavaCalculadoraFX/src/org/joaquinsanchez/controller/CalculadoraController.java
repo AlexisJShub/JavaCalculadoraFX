@@ -14,7 +14,6 @@ public class CalculadoraController {
         if (calculoTerminado && (entrada.matches("[0-9]") || entrada.equals(".") || entrada.equals("(") || entrada.equals(")"))) {
             limpiarTodo();
         } else if (calculoTerminado) {
-            // Si presiona un operador después de un cálculo, continúa usando el resultado anterior
             calculoTerminado = false;
         }
 
@@ -29,7 +28,8 @@ public class CalculadoraController {
             case ".": 
                 agregarPunto();
                 break;
-            case "+": case "-": case "*": case "/": case "^": case "√":
+            // ¡AQUÍ ESTÁ EL ARREGLO! Agregamos el case "%":
+            case "+": case "-": case "*": case "/": case "^": case "√": case "%":
                 if (!opcion1.isEmpty()) {
                     operador = entrada;
                 }
@@ -59,7 +59,6 @@ public class CalculadoraController {
         calculoTerminado = false;
     }
         
-    //Esta es la opcion de delete para eliminar un numero si nos equivocamos
     private void borrarUltimo() {
         if (!opcion2.isEmpty()) {
             opcion2 = opcion2.substring(0, opcion2.length() - 1);
@@ -70,15 +69,12 @@ public class CalculadoraController {
         }
     }
 
-    //para agregar punto para operaciones decimales
     private void agregarPunto() {
         if (operador.isEmpty()) {
-            // Solo agrega el punto si no existe ya uno en opcion1
             if (!opcion1.contains(".")) {
                 opcion1 += opcion1.isEmpty() ? "0." : ".";
             }
         } else {
-            // Solo agrega el punto si no existe ya uno en opcion2
             if (!opcion2.contains(".")) {
                 opcion2 += opcion2.isEmpty() ? "0." : ".";
             }
@@ -99,7 +95,7 @@ public class CalculadoraController {
                     resultado = num1 / 100.0;
                 } else if (!opcion2.isEmpty()) {
                     
-                 // Hacemos lo mismo con la opcion2
+                    // Hacemos lo mismo con la opcion2
                     String num2Limpio = opcion2.replace("(", "").replace(")", "");
                     double num2 = Double.parseDouble(num2Limpio);
 
@@ -132,7 +128,9 @@ public class CalculadoraController {
                 opcion1 = "Error";
             }
         }
-    } private void formatearResultado(double resultado) {
+    }
+    
+    private void formatearResultado(double resultado) {
         if (resultado % 1 == 0) {
             opcion1 = String.valueOf((long) resultado);
         } else {
