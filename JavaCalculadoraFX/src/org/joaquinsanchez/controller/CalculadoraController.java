@@ -10,8 +10,8 @@ public class CalculadoraController {
     private boolean calculoTerminado = false;
 
     public void procesoDeEntrada(String entrada, Label pantalla) {
-        // Si ya se completó un cálculo y se presiona un número o un punto, se reinicia la calculadora
-        if (calculoTerminado && (entrada.matches("[0-9]") || entrada.equals("."))) {
+        // Agregamos los paréntesis a la regla de reinicio
+        if (calculoTerminado && (entrada.matches("[0-9]") || entrada.equals(".") || entrada.equals("(") || entrada.equals(")"))) {
             limpiarTodo();
         } else if (calculoTerminado) {
             // Si presiona un operador después de un cálculo, continúa usando el resultado anterior
@@ -19,13 +19,14 @@ public class CalculadoraController {
         }
 
         switch (entrada) {
-            case "CLR": //limpiar la pantallita
+            case "CE": 
+            case "C": 
                 limpiarTodo();
                 break;
-            case "<--": //para borrar ultimo digito
+            case "<--": 
                 borrarUltimo();
                 break;
-            case ".": //para agregar punto
+            case ".": 
                 agregarPunto();
                 break;
             case "+": case "-": case "*": case "/": case "^": case "√":
@@ -33,12 +34,12 @@ public class CalculadoraController {
                     operador = entrada;
                 }
                 break;
-            case "=": //Aca se calcula nuestro resultado
+            case "=": 
                 calcularResultado();
                 break;
             default:
-                // Manejo de números del 0 al 9
-                if (entrada.matches("[0-9]")) {
+                // Aceptamos números del 0 al 9 Y paréntesis
+                if (entrada.matches("[0-9]") || entrada.equals("(") || entrada.equals(")")) {
                     if (operador.isEmpty()) {
                         opcion1 += entrada;
                     } else {
@@ -87,14 +88,20 @@ public class CalculadoraController {
     private void calcularResultado() {
         if (!opcion1.isEmpty() && !operador.isEmpty()) {
             try {
-                //Usamos double para que funcionen nuestros decimales
-                double num1 = Double.parseDouble(opcion1);
+                // Eliminamos los paréntesis temporalmente solo para que Java pueda hacer la conversión matemática
+                String num1Limpio = opcion1.replace("(", "").replace(")", "");
+                double num1 = Double.parseDouble(num1Limpio);
                 double resultado = 0;
 
                 if (operador.equals("√")) {
                     resultado = Math.sqrt(num1);
+                } else if (operador.equals("%")) {
+                    resultado = num1 / 100.0;
                 } else if (!opcion2.isEmpty()) {
-                    double num2 = Double.parseDouble(opcion2);
+                    
+                 // Hacemos lo mismo con la opcion2
+                    String num2Limpio = opcion2.replace("(", "").replace(")", "");
+                    double num2 = Double.parseDouble(num2Limpio);
 
                     switch (operador) {
                         case "+" -> resultado = num1 + num2;
@@ -110,12 +117,12 @@ public class CalculadoraController {
                             }
                             resultado = num1 / num2;
                         }
-                        case "^" -> resultado = Math.pow(num1, num2); //para nuestras potencias
+                        case "^" -> resultado = Math.pow(num1, num2); 
                     }
                 } else {
                     return;
                 }
-                    //Aca ya funciona CLR para borrar el resultado y nos deje la pantallita en blanco
+                
                 formatearResultado(resultado);
                 operador = "";
                 opcion2 = "";
@@ -125,17 +132,14 @@ public class CalculadoraController {
                 opcion1 = "Error";
             }
         }
-    }
-    
-    //Le faltaba comprobar para poder entregar decimales al momento
-    private void formatearResultado(double resultado) {
+    } private void formatearResultado(double resultado) {
         if (resultado % 1 == 0) {
             opcion1 = String.valueOf((long) resultado);
         } else {
             opcion1 = String.valueOf(resultado);
         }
     }
-        //y para colocar numeros y operadores tambien 
+        
     private void actualizarPantalla(Label pantalla) {
         if (opcion1.equals("Error")) {
             pantalla.setText("Error");
